@@ -32,5 +32,25 @@
     "namedInserts": {
       "key": "value"
     }
+  },
+  "0008": {
+    "message": "This is an example message with special inserts {foo} - {boo} - {num}",
+    "action": "Write a real message",
+    "detail": "detail detail detail {id}",
+    "url": "https://github.com/IBM/message-catalog-manager/README.md",
+    "addInsertsToData": true,
+    "data": {
+      "other": "{foo}-{boo}"
+    }
+  },
+  "0009": {
+    "message": "This is an example message with special inserts {foo} - {boo} - {num}",
+    "action": "Write a real message",
+    "detail": "detail detail detail {id}",
+    "url": "https://github.com/IBM/message-catalog-manager/README.md",
+    "data": {
+      "myFOO": "BEFORE {foo} AFTER"  ,
+      "myBOO": "{boo}"
+    }
   }
 }

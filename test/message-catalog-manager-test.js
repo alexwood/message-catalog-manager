@@ -130,6 +130,16 @@ describe('MessageCatalogManager', function () {
             expect(test).to.throw(Error, /positionalInserts value with index: '0' is of unsupported type function/);
         });
 
+        it('returns named.inserts in data object if addInsertsToData used', function() {
+            var message = MC.getMessage("exampleLocal", "0008", {foo:"bar", boo: true, num: 0}, [], "en", 1);
+            expect(message.data).to.deep.equal({foo:"bar",boo: true, other: "bar-true", num: 0});
+        });
+
+        it('returns builds data object applying inserts in data object descriptor', function() {
+            var message = MC.getMessage("exampleLocal", "0009", {foo:"bar", boo: true, num: 0}, [], "en", 1);
+            expect(message.data).to.deep.equal({myFOO: "BEFORE bar AFTER", myBOO: "true"});
+        });
+
         it('returns a combined notification context object if message.namedInserts exists', function() {
             var message = MC.getMessage("exampleLocal", "0007", {foo:"bar", boo: true, num: 0}, [], "en", 1);
             expect(message.namedInserts).to.deep.equal({foo:"bar",boo: true, num: 0, key:"value"});
